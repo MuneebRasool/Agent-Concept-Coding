@@ -76,9 +76,9 @@ Muneeb has conceptual Python code illustrating:
 - A universal \( R_i(t) \) approach.
 - Feedback handling for adaptive \( \alpha, \beta \).
 
-For the actual code, please contact Muneeb to share his Python files.
+
 
 ---
 
-**Happy coding and experimenting!**
+
 
