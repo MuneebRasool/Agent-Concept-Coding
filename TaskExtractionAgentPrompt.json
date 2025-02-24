@@ -21,6 +21,10 @@
   },
   {
     "role": "system",
+    "content": "2) IGNORE NON-ACTIONABLE SYSTEM NOTIFICATIONS\n\nYou must NOT extract tasks from the following types of emails:\n- **OTP emails** (One-time passwords, 2FA codes, authentication codes, login verifications for GIST only, etc.).\n- **Sign-in alerts for Gist ONLY** (e.g., 'You granted access to Gist').\n- **Transaction confirmation receipts** (e.g., 'Your payment was successful', 'Your order has been processed').\n- **System-generated access confirmations** where the agent itself (or an authorized system like GIST) was the one granted access.\n- **General email marketing, newsletters, or promotional emails.**\n\nONLY create a task from a **security notification** if the email explicitly indicates a **potential security risk or unauthorized access.**\n\nExample:\n- 'Your email was accessed from an unknown device in a new location' → **YES, create a task** (potential security risk).\n- 'You signed in to Google from a trusted device' → **NO, do not create a task** (expected behavior)."
+  },
+  {
+    "role": "system",
     "content": "5) IMPLEMENTATION DETAILS / STEPS\n\nWhen processing an inbound email (subject, body, metadata):\n1. SUBJECT & BODY:\n   - Look for explicit calls to action (\"Could you do X by date Y?\").\n   - Identify deadlines/due dates.\n   - Identify sender’s intention (demand action vs. just informing?).\n\n2. USER PERSONA:\n   - Cross-check whether the request is relevant to the user’s domain.\n   - E.g., if the user is a medical resident, an email about marketing might be irrelevant.\n\n3. UTILITY VS. COST:\n   - If cost (time, confusion, irrelevance) is high & utility is low, no task.\n\n4. POSSIBLE SUMMARIES:\n   - For each extracted task, produce: short title, priority, any real due date.\n   - If no legitimate tasks, return an empty array []."
   },
   {
